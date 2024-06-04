@@ -1,7 +1,11 @@
 const server = require("./src/interfaces/http/server.js");
 const dotenv = require("dotenv");
 dotenv.config();
-const { PORT } = process.env;
+let PORT = 3001;
+
+if (process.env.PORT) {
+  PORT = process.env.PORT;
+}
 
 server.listen(PORT, async () => {
   try {
