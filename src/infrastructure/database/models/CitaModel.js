@@ -1,8 +1,6 @@
 const { DataTypes } = require("sequelize");
-const UsuarioModel = require("./UsuarioModel");
-const TerapeutaModel = require("./TerapeutaModel");
 
-module.exports = (sequelize) => {
+module.exports = async(sequelize, TerapeutaModel, UsuarioModel) => {
   sequelize.define("Cita", {
     usuarioId: {
       type: DataTypes.INTEGER,

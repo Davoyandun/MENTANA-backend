@@ -14,24 +14,30 @@ const sequelize = new Sequelize(
   { logging: false, native: false }
 );
 
-CitaModel(sequelize);
 TerapeutaModel(sequelize);
 UsuarioModel(sequelize);
 
 const { Cita, Terapeuta, Usuario } = sequelize.models;
+CitaModel(sequelize, Terapeuta, Usuario );
+
 
 // Relationship ---------------------------
 
-// Usuario-Cita
-Usuario.hasMany(Cita);
-Cita.belongsTo(Usuario);
+// // Usuario-Cita
+// Usuario.hasMany(Cita);
+// Cita.belongsTo(Usuario);
 
-// Usuario-Terapeuta
-Usuario.hasMany(Terapeuta);
-Terapeuta.hasMany(Usuario);
+// // // Usuario-Terapeuta
+// Usuario.hasMany(Terapeuta);
+// Terapeuta.hasMany(Usuario);
 
-// Terapeuta-Cita
-Terapeuta.hasMany(Cita);
-Cita.belongsTo(Terapeuta);
+// // // Terapeuta-Cita
+// Terapeuta.hasMany(Cita);
+// Cita.belongsTo(Terapeuta);
 
-module.exports = { Cita, Terapeuta, Usuario, sequelize };
+module.exports = { 
+  Cita, 
+  Terapeuta, 
+  Usuario, 
+  sequelize 
+};
