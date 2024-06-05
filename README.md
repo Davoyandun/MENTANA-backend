@@ -1,10 +1,10 @@
 # MENTANA-backend
 
-This backend application is built with Node.js, Express, Sequelize (an object-relational mapper), and PostgreSQL for database interactions.
+This backend application is built with Node.js (v20.14.0), Express(v4.19.2), Sequelize(v6.37.3), and PostgreSQL for database interactions.
 
 ## Prerequisites
 
-Node.js, Git and npm (or yarn) installed on your system.
+Node.js, Git and npm installed on your system.
 
 ## Installation
 

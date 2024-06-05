@@ -19,6 +19,5 @@ server.use((req, res, next) => {
 });
 
 server.use(express.json());
-server.use("/", () => console.log("hello world"));
 
 module.exports = server;
