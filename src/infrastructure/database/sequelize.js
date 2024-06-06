@@ -16,24 +16,19 @@ const sequelize = new Sequelize(
 
 TerapeutaModel(sequelize);
 UsuarioModel(sequelize);
+CitaModel(sequelize);
 
-const { Cita, Terapeuta, Usuario } = sequelize.models;
-CitaModel(sequelize, Terapeuta, Usuario );
-
+const { Terapeuta, Usuario, Cita } = sequelize.models;
 
 // Relationship ---------------------------
 
-// // Usuario-Cita
-// Usuario.hasMany(Cita);
-// Cita.belongsTo(Usuario);
+// Usuario-Cita
+Usuario.hasMany(Cita, { foreignKey: "usuarioId" });
+Cita.belongsTo(Usuario,{ foreignKey: "usuarioId" });
 
-// // // Usuario-Terapeuta
-// Usuario.hasMany(Terapeuta);
-// Terapeuta.hasMany(Usuario);
-
-// // // Terapeuta-Cita
-// Terapeuta.hasMany(Cita);
-// Cita.belongsTo(Terapeuta);
+// Terapeuta-Cita
+Terapeuta.hasMany(Cita, { foreignKey: "terapeutaId" });
+Cita.belongsTo(Terapeuta, { foreignKey: "terapeutaId" });
 
 module.exports = { 
   Cita, 
