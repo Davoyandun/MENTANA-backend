@@ -4,6 +4,10 @@ const cors = require("cors");
 
 const server = express();
 
+server.get("/integration", (req, res) => {
+  res.json([]);
+});
+
 server.use(cors());
 server.use(morgan("dev"));
 server.use(express.urlencoded({ extended: true }));
