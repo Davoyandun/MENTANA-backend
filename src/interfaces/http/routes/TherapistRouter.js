@@ -6,19 +6,19 @@ const TherapistController = require("../../../adapters/controllers/TherapistCont
 const therapistRouter = express.Router();
 
 const therapistRepository = new SequelizeTherapistRepository(Therapist);
-const appointmentController = new TherapistController(therapistRepository);
+const therapistController = new TherapistController(therapistRepository);
 
 therapistRouter.post("/therapists", (req, res) =>
-  appointmentController.create(req, res)
+  therapistController.create(req, res)
 );
 therapistRouter.get("/therapists/:id", (req, res) =>
-  appointmentController.get(req, res)
+  therapistController.get(req, res)
 );
 therapistRouter.put("/therapists/:id", (req, res) =>
-  appointmentController.update(req, res)
+  therapistController.update(req, res)
 );
 therapistRouter.delete("/therapists/:id", (req, res) =>
-  appointmentController.delete(req, res)
+  therapistController.delete(req, res)
 );
 
 module.exports = therapistRouter;
