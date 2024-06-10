@@ -1,7 +1,7 @@
 // Models -----------------------------------------------
-const CitaModel = require("./models/CitaModel");
-const TerapeutaModel = require("./models/TerapeutaModel");
-const UsuarioModel = require("./models/UsuarioModel");
+const AppointmentModel = require("./models/AppointmentModel");
+const TherapistModel = require("./models/TherapistModel");
+const UserModel = require("./models/UserModel");
 // --------------------------------------------------------
 const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
@@ -14,25 +14,25 @@ const sequelize = new Sequelize(
   { logging: false, native: false }
 );
 
-TerapeutaModel(sequelize);
-UsuarioModel(sequelize);
-CitaModel(sequelize);
+TherapistModel(sequelize);
+UserModel(sequelize);
+AppointmentModel(sequelize);
 
-const { Terapeuta, Usuario, Cita } = sequelize.models;
+const { Therapist, User, Appointment } = sequelize.models;
 
 // Relationship ---------------------------
 
-// Usuario-Cita
-Usuario.hasMany(Cita, { foreignKey: "usuarioId" });
-Cita.belongsTo(Usuario,{ foreignKey: "usuarioId" });
+// User-Appointment
+User.hasMany(Appointment, { foreignKey: "userId" });
+Appointment.belongsTo(User, { foreignKey: "userId" });
 
-// Terapeuta-Cita
-Terapeuta.hasMany(Cita, { foreignKey: "terapeutaId" });
-Cita.belongsTo(Terapeuta, { foreignKey: "terapeutaId" });
+// Therapist-Appointment
+Therapist.hasMany(Appointment, { foreignKey: "therapistId" });
+Appointment.belongsTo(Therapist, { foreignKey: "therapistId" });
 
-module.exports = { 
-  Cita, 
-  Terapeuta, 
-  Usuario, 
-  sequelize 
+module.exports = {
+  Appointment,
+  Therapist,
+  User,
+  sequelize,
 };
