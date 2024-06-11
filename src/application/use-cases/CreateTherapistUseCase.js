@@ -15,7 +15,7 @@ class CreateTherapistUseCase {
       !therapistData.email ||
       !therapistData.phone
     ) {
-      throw new Error("Faltan datos de creación");
+      throw new Error("Creation data missing");
     }
 
     // Crear la entidad Terapeuta
