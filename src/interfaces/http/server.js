@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const mainRouter = require("./routes");
 
 const server = express();
 
@@ -23,5 +24,6 @@ server.use((req, res, next) => {
 });
 
 server.use(express.json());
+server.use(mainRouter);
 
 module.exports = server;

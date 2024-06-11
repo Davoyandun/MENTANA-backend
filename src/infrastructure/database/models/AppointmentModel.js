@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
-module.exports = async(sequelize) => {
-  sequelize.define("Cita", {
+module.exports = async (sequelize) => {
+  sequelize.define("Appointment", {
     // las referencias se veran mas en profundida luego ya que en teoría con las relaciones es suficiente
     // usuarioId: {
     //   type: DataTypes.INTEGER,
