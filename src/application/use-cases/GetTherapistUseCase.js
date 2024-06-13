@@ -10,6 +10,10 @@ class GetTherapistUseCase {
     // Buscar la entidad en el repositorio
     const therapist = await this.therapistRepository.get(id);
 
+    if (!therapist) {
+      throw new Error("Therapist not found");
+    }
+
     // Retornar el terapeuta encontrado
     return therapist;
   }
