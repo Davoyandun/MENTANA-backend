@@ -73,24 +73,9 @@ class SequelizeTherapistRepository extends BaseRepository {
       });
       if (!therapist) throw new Error(`Therapist with id ${id} not found`);
 
-      const updated = await therapist.update({
-        name: updatedTerapeuta.name,
-        specialty: updatedTerapeuta.specialty,
-        description: updatedTerapeuta.description,
-        password: updatedTerapeuta.password,
-        email: updatedTerapeuta.email,
-        phone: updatedTerapeuta.phone,
-      });
+      const updated = await therapist.update(updatedTerapeuta);
 
-      return new Therapist(
-        updated.id,
-        updated.name,
-        updated.specialty,
-        updated.description,
-        updated.email,
-        updated.password,
-        updated.phone
-      );
+      return updated;
     } catch (error) {
       throw new Error(`Error updating therapist: ${error.message}`);
     }
