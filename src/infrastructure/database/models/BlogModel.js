@@ -1,46 +1,38 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 
 module.exports = (sequelize) => {
-  sequelize.define("Therapist", {
+  sequelize.define("Blog", {
     id: {
       type: DataTypes.UUID,
       defaultValue: () => uuidv4(),
       primaryKey: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
-    },
-    speciality: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
+    createdAt:{
+      type: DataTypes.DATE,
       allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: Sequelize.NOW
     },
     image_url:{
       type: DataTypes.STRING,
       allowNull: true,
     },
-    is_admin:{
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    therapistId:{
+      type: DataTypes.UUID,
+      allowNull:false,
+      references: {
+        model: "Therapists",
+        key: "id"
+      }
     },
     is_deleted:{
       type: DataTypes.BOOLEAN,

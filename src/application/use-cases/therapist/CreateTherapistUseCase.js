@@ -1,4 +1,4 @@
-const Therapist = require("../../domain/entities/Therapist");
+const Therapist = require("../../../domain/entities/Therapist");
 
 class CreateTherapistUseCase {
   constructor(therapistRepository) {
@@ -6,33 +6,22 @@ class CreateTherapistUseCase {
   }
 
   async execute(therapistData) {
-    // Validación de datos de entrada
     if (
       !therapistData.name ||
       !therapistData.speciality ||
       !therapistData.description ||
       !therapistData.password ||
       !therapistData.email ||
+      !therapistData.image_url ||
       !therapistData.phone
     ) {
       throw new Error("Creation data missing");
     }
 
-    // Crear la entidad Terapeuta
-    const therapist = new Therapist(
-      null, // El ID se generará en la base de datos
-      therapistData.name,
-      therapistData.speciality,
-      therapistData.description,
-      therapistData.password,
-      therapistData.email,
-      therapistData.phone
-    );
+    const therapist = new Therapist(therapistData);
 
-    // Guardar la entidad en el repositorio
     const savedTherapist = await this.therapistRepository.create(therapist);
 
-    // Retornar el terapeuta creado
     return savedTherapist;
   }
 }

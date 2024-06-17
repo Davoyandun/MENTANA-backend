@@ -1,7 +1,7 @@
-const CreateTherapistUseCase = require("../../application/use-cases/CreateTherapistUseCase");
-const GetTherapistUseCase = require("../../application/use-cases/GetTherapistUseCase");
-const UpdateTherapistUseCase = require("../../application/use-cases/UpdateTherapistUseCase");
-const DeleteTherapistUseCase = require("../../application/use-cases/DeleteTherapistUseCase");
+const CreateTherapistUseCase = require("../../application/use-cases/therapist/CreateTherapistUseCase");
+const GetTherapistUseCase = require("../../application/use-cases/therapist/GetTherapistUseCase");
+const UpdateTherapistUseCase = require("../../application/use-cases/therapist/UpdateTherapistUseCase");
+const DeleteTherapistUseCase = require("../../application/use-cases/therapist/DeleteTherapistUseCase");
 
 
 class TherapistController {

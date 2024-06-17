@@ -4,13 +4,10 @@ class DeleteTherapistUseCase {
   }
 
   async execute(id) {
-    // Validación de datos de entrada
-    if ( !id ) throw new Error("id required to update");
+    if ( !id ) throw new Error("id required to delete");
 
-    // Guardar la entidad en el repositorio
     const deletedTherapist = await this.therapistRepository.delete(id);
 
-    // Retornar el terapeuta creado
     return deletedTherapist;
   }
 }

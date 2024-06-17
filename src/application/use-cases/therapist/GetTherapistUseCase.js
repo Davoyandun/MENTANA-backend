@@ -4,13 +4,10 @@ class GetTherapistUseCase {
   }
 
   async execute(id) {
-    // Validación de datos de entrada
-    if ( !id ) throw new Error("id required to update");
+    if ( !id ) throw new Error("id required");
 
-    // Buscar la entidad en el repositorio
     const therapist = await this.therapistRepository.get(id);
 
-    // Retornar el terapeuta encontrado
     return therapist;
   }
 }

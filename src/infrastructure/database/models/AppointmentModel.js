@@ -1,29 +1,22 @@
 const { DataTypes } = require("sequelize");
+const { v4: uuidv4 } = require("uuid");
 
 module.exports = async (sequelize) => {
   sequelize.define("Appointment", {
-    // las referencias se veran mas en profundida luego ya que en teoría con las relaciones es suficiente
-    // usuarioId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "UsuarioModel",
-    //     key: "id",
-    //   },
-    // },
-    // terapeutaId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "TerapeutaModel",
-    //     key: "id",
-    //   },
-    // },
-    fecha: {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: () => uuidv4(),
+      primaryKey: true,
+    },
+    date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    enlaceVideollamada: {
+    videoCallLink: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+  }, {
+    timestamps: false
   });
 };
