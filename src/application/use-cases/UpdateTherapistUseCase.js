@@ -1,4 +1,4 @@
-const Therapist = require("../../domain/entities/Therapist");
+
 
 class UpdateTherapistUseCase {
   constructor(therapistRepository) {
@@ -12,19 +12,9 @@ class UpdateTherapistUseCase {
     const isEmptyObject = obj => Object.keys(obj).length === 0;
     if (isEmptyObject(therapistData)) throw new Error("At least one piece of information is required to update");
 
-    // Crear la entidad Terapeuta
-    const therapist = new Therapist(
-      therapistData.id, 
-      therapistData.name,
-      therapistData.speciality,
-      therapistData.description,
-      therapistData.password,
-      therapistData.email,
-      therapistData.phone
-    );
-
+  
     // Guardar la entidad en el repositorio
-    const savedTherapist = await this.therapistRepository.update(id, therapist);
+    const savedTherapist = await this.therapistRepository.update(id, therapistData);
 
     // Retornar el terapeuta creado
     return savedTherapist;

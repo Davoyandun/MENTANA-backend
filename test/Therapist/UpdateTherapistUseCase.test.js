@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const UpdateTherapistUseCase = require("../../src/application/use-cases/UpdateTherapistUseCase");
-const Therapist = require("../../src/domain/entities/Therapist");
+
 
 describe("UpdateTherapistUseCase", () => {
   let updateTherapistUseCase;
@@ -29,7 +29,7 @@ describe("UpdateTherapistUseCase", () => {
 
     const result = await updateTherapistUseCase.execute(1, therapistData);
 
-    expect(mockTherapistRepository.update).toHaveBeenCalledWith(1, expect.any(Therapist));
+    expect(mockTherapistRepository.update).toHaveBeenCalledWith(1, expect.objectContaining(therapistData));
     expect(result).toEqual(updatedTherapist);
   });
 
