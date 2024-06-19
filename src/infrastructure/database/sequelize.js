@@ -2,6 +2,7 @@
 const AppointmentModel = require("./models/AppointmentModel");
 const TherapistModel = require("./models/TherapistModel");
 const UserModel = require("./models/UserModel");
+const BlogModel = require("./models/BlogModel");
 // --------------------------------------------------------
 const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
@@ -17,8 +18,9 @@ const sequelize = new Sequelize(
 TherapistModel(sequelize);
 UserModel(sequelize);
 AppointmentModel(sequelize);
+BlogModel(sequelize);
 
-const { Therapist, User, Appointment } = sequelize.models;
+const { Therapist, User, Appointment, Blog} = sequelize.models;
 
 // Relationship ---------------------------
 
@@ -30,9 +32,14 @@ Appointment.belongsTo(User, { foreignKey: "userId" });
 Therapist.hasMany(Appointment, { foreignKey: "therapistId" });
 Appointment.belongsTo(Therapist, { foreignKey: "therapistId" });
 
+// Therapist-Blog
+Therapist.hasMany(Blog, { foreignKey: "therapistId" });
+Blog.belongsTo(Therapist, { foreignKey: "therapistId" });
+
 module.exports = {
   Appointment,
   Therapist,
   User,
-  sequelize,
+  Blog,
+  sequelize
 };

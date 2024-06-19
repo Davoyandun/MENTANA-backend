@@ -14,8 +14,6 @@ class BaseRepository {
   async delete() {
     throw new Error("Not implemented");
   }
-
-  // Otros métodos necesarios...
 }
 
 module.exports = BaseRepository;

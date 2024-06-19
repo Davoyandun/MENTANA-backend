@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const DeleteTherapistUseCase = require("../../src/application/use-cases/DeleteTherapistUseCase");
+const DeleteTherapistUseCase = require("../../src/application/use-cases/therapist/DeleteTherapistUseCase");
 
 describe("DeleteTherapistUseCase", () => {
   let deleteTherapistUseCase;
@@ -23,12 +23,13 @@ describe("DeleteTherapistUseCase", () => {
   });
 
   it("should throw an error if id is not provided", async () => {
-    await expect(deleteTherapistUseCase.execute()).rejects.toThrow("id required to update");
+    await expect(deleteTherapistUseCase.execute()).rejects.toThrow("id required to delete");
   });
 
   it("should throw an error if therapist is not found", async () => {
-    mockTherapistRepository.delete.mockResolvedValue(null);
+    const therapistId = 1;
+    mockTherapistRepository.delete.mockRejectedValue(new Error(`Error deleting therapist: Therapist with id ${therapistId} not found`));
 
-    await expect(deleteTherapistUseCase.execute(1)).rejects.toThrow("Therapist not found");
+    await expect(deleteTherapistUseCase.execute(therapistId)).rejects.toThrow(`Error deleting therapist: Therapist with id ${therapistId} not found`);
   });
 });

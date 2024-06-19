@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const GetTherapistUseCase = require("../../src/application/use-cases/GetTherapistUseCase");
+const GetTherapistUseCase = require("../../src/application/use-cases/therapist/GetTherapistUseCase");
 
 describe("GetTherapistUseCase", () => {
   let getTherapistUseCase;
@@ -31,12 +31,13 @@ describe("GetTherapistUseCase", () => {
   });
 
   it("should throw an error if id is not provided", async () => {
-    await expect(getTherapistUseCase.execute()).rejects.toThrow("id required to update");
+    await expect(getTherapistUseCase.execute()).rejects.toThrow("id required to get");
   });
 
   it("should throw an error if therapist is not found", async () => {
-    mockTherapistRepository.get.mockResolvedValue(null);
+    const therapistId = 1;
+    mockTherapistRepository.get.mockRejectedValue(new Error(`Error getting therapist by ID: user ${therapistId} not found`));
 
-    await expect(getTherapistUseCase.execute(1)).rejects.toThrow("Therapist not found");
+    await expect(getTherapistUseCase.execute(therapistId)).rejects.toThrow(`Error getting therapist by ID: user ${therapistId} not found`);
   });
 });

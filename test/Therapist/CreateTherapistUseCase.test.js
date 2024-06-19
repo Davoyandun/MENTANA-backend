@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const CreateTherapistUseCase = require("../../src/application/use-cases/CreateTherapistUseCase");
+const CreateTherapistUseCase = require("../../src/application/use-cases/therapist/CreateTherapistUseCase");
 const Therapist = require("../../src/domain/entities/Therapist");
 
 describe("CreateTherapistUseCase", () => {
@@ -21,6 +21,7 @@ describe("CreateTherapistUseCase", () => {
       password: "password123",
       email: "john.doe@example.com",
       phone: "1234567890",
+      image_url: "http://example.com.ar/image",
     };
 
     const savedTherapist = { id: 1, ...therapistData };

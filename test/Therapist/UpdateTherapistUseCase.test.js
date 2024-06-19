@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const UpdateTherapistUseCase = require("../../src/application/use-cases/UpdateTherapistUseCase");
+const UpdateTherapistUseCase = require("../../src/application/use-cases/therapist/UpdateTherapistUseCase");
 
 
 describe("UpdateTherapistUseCase", () => {
@@ -15,13 +15,14 @@ describe("UpdateTherapistUseCase", () => {
 
   it("should update a therapist successfully", async () => {
     const therapistData = {
-      id: 1,
+      // id can not be change !IMPORTANT
       name: "John Doe",
       speciality: "Psychology",
       description: "Experienced therapist",
       password: "password123",
       email: "john.doe@example.com",
       phone: "1234567890",
+      image_url: "http://example.com.ar/image",
     };
 
     const updatedTherapist = { ...therapistData };
