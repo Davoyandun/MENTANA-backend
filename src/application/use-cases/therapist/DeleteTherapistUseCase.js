@@ -4,11 +4,15 @@ class DeleteTherapistUseCase {
   }
 
   async execute(id) {
-    if ( !id ) throw new Error("id required to delete");
+    try {
+      if ( !id ) throw new Error("id required to delete");
 
-    const deletedTherapist = await this.therapistRepository.delete(id);
+      const deletedTherapist = await this.therapistRepository.delete(id);
 
-    return deletedTherapist;
+      return deletedTherapist;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }
 

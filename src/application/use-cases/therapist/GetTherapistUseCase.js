@@ -4,11 +4,15 @@ class GetTherapistUseCase {
   }
 
   async execute(id) {
-    if ( !id ) throw new Error("id required");
+    try {
+      if ( !id ) throw new Error("id required to get");
 
-    const therapist = await this.therapistRepository.get(id);
+      const therapist = await this.therapistRepository.get(id);
 
-    return therapist;
+      return therapist;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }
 
