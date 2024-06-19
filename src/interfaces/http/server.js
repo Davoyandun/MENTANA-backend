@@ -2,11 +2,13 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const mainRouter = require("./routes");
+const middleware = require("../../middleware/index");
 
 const server = express();
+const middlewareClass = new middleware();
 
-server.get("/integration", (req, res) => {
-  res.json([]);
+server.get("/integration", middlewareClass.decodeToken, (req, res) => {
+  res.json({ message: "Hello World" });
 });
 
 server.use(cors());

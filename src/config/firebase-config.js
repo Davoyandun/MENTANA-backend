@@ -13,11 +13,14 @@ const { TYPE, PROJECT_ID,
   CLIENT_X509_CERT_URL, 
   UNIVERSE_DOMAIN } = process.env;
 
+const { privateKey } = JSON.parse(PRIVATE_KEY);
+
+
 const serviceAccount = {
   type: TYPE,
   project_id: PROJECT_ID,
   private_key_id: PRIVATE_KEY_ID,
-  private_key: PRIVATE_KEY,
+  private_key: privateKey,
   client_email: CLIENT_EMAIL,
   client_id: CLIENT_ID,
   auth_uri: AUTH_URI,
