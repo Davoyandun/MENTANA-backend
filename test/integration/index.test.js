@@ -3,8 +3,8 @@ const request = require("supertest");
 const server = require("../../src/interfaces/http/server");
 
 describe("GET /integration", () => {
-  test("should respond with a 200 status code", async () => {
+  test("the request is being sent without auth header so it should respond with a 401 status code", async () => {
     const response = await request(server).get("/integration").send();
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(401);
   });
 });
