@@ -10,7 +10,7 @@ if (process.env.PORT) {
 
 server.listen(PORT, async () => {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
     // eslint-disable-next-line no-console
     console.log("server listen on port", PORT);
   } catch (error) {
