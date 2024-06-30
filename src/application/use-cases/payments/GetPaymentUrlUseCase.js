@@ -46,8 +46,10 @@ class GetPaymentUrlUseCase {
       //El tiempo de expiración debe ser de al menos 5 minutos desde el momento de la creación.
       expiration: "2021-12-30T00:00:00-05:00",
       //URL de retorno, a esta url se redirige al usuario una vez termina la sesión. 
-      //Ocurre cuando el usuario da click en Volver al comercio.
-      returnUrl: "http/localhost:3000/payment/success",
+      //Ocurre cuando el usuario da click en Volver al comercio. aca deberia ir a una vista de
+      //con un "cargando" que diga procesando pago... a su vez esa vista es la que debe
+      //tener la request para al recibir la respuesta del pago. redireccione a success o failure.
+      returnUrl: "http/localhost:3000/payment/processing",
       //Dirección IP del usuario que realizará el proceso. tambien se deberia de requerir en el body "paymentInfo"
       ipAddress: "127.0.0.1",
       //User Agent del navegador del usuario que realizará el proceso. tambien se deberia de requerir en el body "paymentInfo"
