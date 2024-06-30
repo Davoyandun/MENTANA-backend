@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 
 
 const GetPaymentUrlUseCase = require("../../usecases/payments/GetPaymentUrlUseCase");
 
 class PaymentController {
   constructor(paymentRepository) {
-    this.getPaymentUrlUseCase = new GetPaymentUrlUseCase(paymentRepository);
+    this.getPaymentUrlUseCase = new GetPaymentUrlUseCase();
   }
     
   async getPaymentUrl(req, res) {
