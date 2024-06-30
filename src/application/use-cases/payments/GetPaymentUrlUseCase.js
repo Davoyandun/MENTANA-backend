@@ -1,9 +1,6 @@
 const axios = require("axios");
 
 class GetPaymentUrlUseCase {
-  constructor(paymentRepository) {
-    this.paymentRepository = paymentRepository;
-  }
   async execute(paymentInfo) {
     /*
       en paymentInfo recibimos el objeto del front, 
